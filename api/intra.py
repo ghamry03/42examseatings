@@ -125,7 +125,7 @@ class IntraAPIClient(object):
             return total
         last_page = math.ceil(int(data.headers['X-Total']) /
             int(data.headers['X-Per-Page']))
-        for page in tqdm(range(kwargs['params']['page'], last_page),
+        for page in tqdm(range(kwargs['params']['page'], last_page, '░▒█'),
             initial=1, total=last_page - kwargs['params']['page'] + 1,
             desc=url, unit='p', disable=not self.progress_bar):
             kwargs['params']['page'] = page + 1
@@ -154,7 +154,7 @@ class IntraAPIClient(object):
         last_page = stop_page if stop_page and stop_page < last_page else last_page
         page = kwargs['params']['page'] + 1
         pbar = tqdm(initial=1, total=last_page - page + 2,
-            desc=url, unit='p', disable=not self.progress_bar)
+            desc=url, unit='p', disable=not self.progress_bar, ascii='░▒█')
 
         while page <= last_page:
             active_threads = []
