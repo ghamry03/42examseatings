@@ -43,3 +43,4 @@ you can check the seats in seats.txt or from the data before sending emails.
 
 ### credits
 - big thanks to hivehelsinki for the beautiful 42api-lib
+- also big thanks to 42 Abu Dhabi for this amazing challenge which pushed me out of my comfort zone and gave me a chance to learn new stuff for the first time like python which I will definitely use it more to do some fun stuff, how to deal with api and databases (sqlite) which was really fun and I will try to use it on side projects.
