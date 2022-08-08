@@ -6,7 +6,7 @@
 #    By: ommohame < ommohame@student.42abudhabi.ae> +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/08/05 02:50:37 by ommohame          #+#    #+#              #
-#    Updated: 2022/08/05 21:15:33 by ommohame         ###   ########.fr        #
+#    Updated: 2022/08/08 18:26:14 by ommohame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ def create_connection(path):
 		connection = sqlite3.connect(path)
 		print("Connection to SQLite DB successful")
 	except Error as e:
-		print(f"The error '{e}' occurred")
+		print(f"database error: error: '{e}' occurred")
 	return (connection)
 
 # insert a query to the database
@@ -34,7 +34,7 @@ def call_query(connection, query):
 	try:
 		cursor.execute(query)
 	except Error as e:
-		print(f"The error '{e}' occurred")
+		print(f"database: error: '{e}' occurred")
 	connection.commit()
 	return(cursor)
 
@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS students (
 	third_seat TEXT
 );
 """
+
 create_exam_table = """
 CREATE TABLE IF NOT EXISTS exam (
 	login INT PRIMARY KEY,
@@ -57,4 +58,15 @@ CREATE TABLE IF NOT EXISTS exam (
 	email TEXT NOT NULL,
 	seat TEXT
 );
+"""
+
+create_seats_table = """
+CREATE TABLE IF NOT EXISTS seats (
+	seat TEXT PRIMARY KEY,
+	student TEXT
+);
+"""
+
+count_users_for_exam = """
+SELECT COUNT(*) FROM exam
 """
